@@ -141,7 +141,7 @@ The agent runs inside [LMDrive](https://github.com/opendilab/LMDrive) on CARLA 0
    | `LMDRIVE_LLM_MODEL` | `llava-v1.5-7b/` | [liuhaotian/llava-v1.5-7b](https://huggingface.co/liuhaotian/llava-v1.5-7b) |
    | `LMDRIVE_VISION_CKPT` | `vision-encoder-r50.pth.tar` | [OpenDILabCommunity/LMDrive-vision-encoder-r50-v1.0](https://huggingface.co/OpenDILabCommunity/LMDrive-vision-encoder-r50-v1.0) |
    | `LMDRIVE_LMDRIVE_CKPT` | `llava-v1.5-checkpoint.pth` | [OpenDILabCommunity/LMDrive-llava-v1.5-7b-v1.0](https://huggingface.co/OpenDILabCommunity/LMDrive-llava-v1.5-7b-v1.0) |
-   | `CSN_LORA_DIR` | `CausalSceneNarration_lora_v1/` (LoRA rows only) | unpacked `CausalSceneNarration_lora_v1.zip` from the GitHub release of this repository |
+   | `CSN_LORA_DIR` | `CausalSceneNarration_lora_v1/` (LoRA rows only) | [liyun0607/CausalSceneNarration-LoRA](https://huggingface.co/liyun0607/CausalSceneNarration-LoRA), or the unpacked `CausalSceneNarration_lora_v1.zip` from the GitHub release of this repository |
 
    The SHA-256 of the two LMDrive files used in the paper are `718c7f1a…076a` (vision encoder) and `1d3c934a…0091` (LLaVA-v1.5 checkpoint), the same as on Hugging Face.
 3. Copy the agent files into the LMDrive checkout and run one configuration:
@@ -182,7 +182,7 @@ The switches read by the agent are:
 
 ## Weights
 
-The LoRA adapter of the rows that the paper calls PL-DPO-NLL is attached to the GitHub release as `CausalSceneNarration_lora_v1.zip` (about 290 MB). It unpacks to a folder `CausalSceneNarration_lora_v1/` with `adapter_model.safetensors`, `adapter_config.json` and `MANIFEST.json`; set `CSN_LORA_DIR` to this folder. The adapter has rank 32 and alpha 32 on the q, k, v, o, gate, up and down projections of all 32 layers. The agent loads it with `peft.PeftModel.from_pretrained` onto the language model of LMDrive-LLaVA-v1.5-7B. `weights/MANIFEST.json` lists the SHA-256 of the files, and `scripts/pack_lora_release.sh` builds the archive from the trained adapter and checks them. The adapter is applied to a Llama 2 based language model, so using it is also subject to the Llama 2 Community License.
+The LoRA adapter of the rows that the paper calls PL-DPO-NLL is on Hugging Face at [liyun0607/CausalSceneNarration-LoRA](https://huggingface.co/liyun0607/CausalSceneNarration-LoRA) and is attached to the GitHub release as `CausalSceneNarration_lora_v1.zip` (about 290 MB). It unpacks to a folder `CausalSceneNarration_lora_v1/` with `adapter_model.safetensors`, `adapter_config.json` and `MANIFEST.json`; set `CSN_LORA_DIR` to this folder. The adapter has rank 32 and alpha 32 on the q, k, v, o, gate, up and down projections of all 32 layers. The agent loads it with `peft.PeftModel.from_pretrained` onto the language model of LMDrive-LLaVA-v1.5-7B. `weights/MANIFEST.json` lists the SHA-256 of the files, and `scripts/pack_lora_release.sh` builds the archive from the trained adapter and checks them. The adapter is applied to a Llama 2 based language model, so using it is also subject to the Llama 2 Community License.
 
 **How this adapter was trained.** The adapter was trained on preference data collected in CARLA Town01. Its training log shows the standard pairwise DPO loss with a fixed β of 0.2 (initial loss 0.690, close to ln 2). The Plackett-Luce ranking term, the NLL term and the scenario-dependent β described in Sec. 4.4 of the paper were therefore not active in this run. All LoRA rows in `results/` and in the paper come from this adapter.
 
