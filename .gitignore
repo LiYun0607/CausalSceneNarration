@@ -1,0 +1,5 @@
+figures/out/
+runs/
+__pycache__/
+*.pyc
+*.zip

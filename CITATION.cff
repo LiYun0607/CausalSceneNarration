@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper below."
+title: "Causal Scene Narration: Inference-Time Text Restructuring for Vision-Language-Action Driving"
+authors:
+  - family-names: Li
+    given-names: Yun
+    affiliation: The University of Tokyo
+  - family-names: Zhang
+    given-names: Yidu
+    affiliation: The University of Tokyo
+  - family-names: Thompson
+    given-names: Simon
+    affiliation: TIER IV, Inc.
+  - family-names: Javanmardi
+    given-names: Ehsan
+    affiliation: The University of Tokyo
+  - family-names: Tsukada
+    given-names: Manabu
+    affiliation: The University of Tokyo
+repository-code: "https://github.com/tlab-wide/CausalSceneNarration"
+license: Apache-2.0
+preferred-citation:
+  type: article
+  title: "Causal Scene Narration: Inference-Time Text Restructuring for Vision-Language-Action Driving"
+  authors:
+    - family-names: Li
+      given-names: Yun
+    - family-names: Zhang
+      given-names: Yidu
+    - family-names: Thompson
+      given-names: Simon
+    - family-names: Javanmardi
+      given-names: Ehsan
+    - family-names: Tsukada
+      given-names: Manabu
+  journal: "Transactions on Machine Learning Research"
+  issn: "2835-8856"
+  year: 2026
+  url: "https://openreview.net/forum?id=sJATIdx6jG"

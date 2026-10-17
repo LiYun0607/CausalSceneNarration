@@ -1,0 +1,6 @@
+# analysis/ and figures/ (Python 3.8 or newer)
+numpy
+scipy
+pandas
+matplotlib
+seaborn>=0.13

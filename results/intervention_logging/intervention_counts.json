@@ -1,0 +1,1027 @@
+{
+ "description": "Per-route intervention summaries written by the runtime monitor (leaderboard/team_code/safety) at the end of each route, for the intervention-logging runs (PL-DPO-NLL LoRA). Routes are listed in the order they were run; a route without a summary did not finish.",
+ "runs": {
+  "baseline_safety_rep1": [
+   {
+    "route_index": 0,
+    "total_checks": 1274,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 1681,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1418,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 251,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 448,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 843,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 155,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 809,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "total_checks": 288,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 9,
+    "total_checks": 2133,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 10,
+    "total_checks": 107,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 11,
+    "total_checks": 150,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 12,
+    "total_checks": 2276,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 13,
+    "total_checks": 962,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 14,
+    "total_checks": 656,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 15,
+    "total_checks": 570,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "baseline_safety_rep2": [
+   {
+    "route_index": 0,
+    "total_checks": 3068,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 1681,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1425,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 237,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 419,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 855,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 160,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 976,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "total_checks": 276,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 9,
+    "total_checks": 1176,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 10,
+    "total_checks": 108,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 11,
+    "total_checks": 151,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 12,
+    "total_checks": 515,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 13,
+    "total_checks": 962,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 14,
+    "total_checks": 596,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 15,
+    "total_checks": 1008,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "baseline_safety_rep3": [
+   {
+    "route_index": 0,
+    "total_checks": 2190,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 606,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1841,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 258,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 421,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 1723,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 154,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 911,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "total_checks": 283,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 9,
+    "total_checks": 1170,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 10,
+    "total_checks": 110,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 11,
+    "total_checks": 149,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 12,
+    "total_checks": 523,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 13,
+    "total_checks": 964,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 14,
+    "total_checks": 1391,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 15,
+    "total_checks": 864,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "baseline_safety_rep4": [
+   {
+    "route_index": 0,
+    "total_checks": 2682,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 696,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1415,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "summary": null
+   },
+   {
+    "route_index": 4,
+    "total_checks": 1641,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 2269,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 1637,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "baseline_safety_rep5": [
+   {
+    "route_index": 0,
+    "total_checks": 3591,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 1681,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1410,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 834,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 448,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 890,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 155,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 977,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "total_checks": 283,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 9,
+    "total_checks": 1625,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 10,
+    "total_checks": 117,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 11,
+    "total_checks": 150,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 12,
+    "total_checks": 2229,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 13,
+    "total_checks": 963,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 14,
+    "total_checks": 634,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 15,
+    "total_checks": 1331,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "csn_safety_rep1": [
+   {
+    "route_index": 0,
+    "total_checks": 2351,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 751,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1652,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 1451,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 448,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 862,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 154,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 887,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "total_checks": 238,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 9,
+    "total_checks": 2841,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 10,
+    "total_checks": 114,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 11,
+    "total_checks": 156,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 12,
+    "total_checks": 2391,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 13,
+    "total_checks": 226,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 14,
+    "total_checks": 476,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 15,
+    "total_checks": 1331,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "csn_safety_rep2": [
+   {
+    "route_index": 0,
+    "total_checks": 911,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 1601,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1654,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 1451,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 474,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 844,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 157,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 778,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "total_checks": 243,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 9,
+    "total_checks": 1815,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 10,
+    "total_checks": 112,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 11,
+    "total_checks": 155,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 12,
+    "total_checks": 2280,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 13,
+    "total_checks": 225,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 14,
+    "total_checks": 452,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 15,
+    "total_checks": 1331,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "csn_safety_rep3": [
+   {
+    "route_index": 0,
+    "total_checks": 3565,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 1681,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1657,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 1451,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 438,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 2701,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 154,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 913,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "total_checks": 238,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 9,
+    "total_checks": 2841,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 10,
+    "total_checks": 115,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 11,
+    "total_checks": 155,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 12,
+    "total_checks": 2391,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 13,
+    "total_checks": 972,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 14,
+    "total_checks": 450,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 15,
+    "total_checks": 1331,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "csn_safety_rep4": [
+   {
+    "route_index": 0,
+    "total_checks": 2219,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 1681,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1650,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 1451,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 1671,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 2701,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 155,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 876,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "total_checks": 238,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 9,
+    "total_checks": 1067,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 10,
+    "total_checks": 111,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 11,
+    "total_checks": 156,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 12,
+    "total_checks": 1651,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 13,
+    "total_checks": 963,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 14,
+    "total_checks": 372,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 15,
+    "total_checks": 849,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   }
+  ],
+  "csn_safety_rep5": [
+   {
+    "route_index": 0,
+    "total_checks": 2078,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 1,
+    "total_checks": 1236,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 2,
+    "total_checks": 1396,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 3,
+    "total_checks": 1451,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 4,
+    "total_checks": 426,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 5,
+    "total_checks": 2701,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 6,
+    "total_checks": 155,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 7,
+    "total_checks": 776,
+    "total_interventions": 0,
+    "direction_conflict_count": 0,
+    "stuck_detected_count": 0
+   },
+   {
+    "route_index": 8,
+    "summary": null
+   }
+  ]
+ }
+}

@@ -1,0 +1,52 @@
+Causal Scene Narration (CSN)
+Copyright 2026 Yun Li, Yidu Zhang, Simon Thompson, Ehsan Javanmardi, Manabu Tsukada
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It includes software derived from LMDrive
+(https://github.com/opendilab/LMDrive), licensed under the Apache License,
+Version 2.0:
+
+  leaderboard/team_code/lmdriver_agent.py
+      Modified from LMDrive's leaderboard/team_code/lmdriver_agent.py. The
+      changes are listed in the header of the file.
+  leaderboard/team_code/csn_agent_config.py
+      The controller settings are those of LMDrive's agent configuration.
+
+LMDrive states that its implementation is based on code from InterFuser,
+TransFuser, 2020_CARLA_challenge, CARLA Leaderboard, Scenario Runner, LAVIS and
+pytorch-image-models. The parts of lmdriver_agent.py kept from LMDrive, such
+as the PID control and the LiDAR preprocessing, may therefore include code from
+these projects. TransFuser (https://github.com/autonomousvision/transfuser) is
+distributed under the following license:
+
+  MIT License
+
+  Copyright (c) 2021 autonomousvision
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+At run time the code uses, without redistributing them here:
+  LMDrive and its LAVIS fork (LAVIS: BSD 3-Clause License, Salesforce)
+  CARLA Leaderboard and ScenarioRunner (MIT License, CARLA)
+  CARLA 0.9.10.1 (MIT License for the code; assets under CC-BY)
+  LLaVA-v1.5-7B weights (Llama 2 Community License)
+
+The LoRA adapter attached to the GitHub release is applied to a Llama 2 based
+language model and is also subject to the Llama 2 Community License.

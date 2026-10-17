@@ -1,0 +1,5 @@
+# Installed on top of LMDrive's conda environment (Python 3.8, torch 2.0.1,
+# transformers 4.28.0, timm 0.4.13). Versions are the ones used in the paper.
+peft==0.8.2
+accelerate==0.25.0
+safetensors==0.4.5

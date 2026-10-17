@@ -1,0 +1,151 @@
+{
+ "description": "Per-frame token estimates logged by leaderboard/team_code/text_token_logger.py during the baseline-comparison runs (Original LMDrive weights). Token counts use the same estimate as the renderer, (len(text)+2)//4. 'instruction' is the first string returned by generate(), which the agent sends to LMDrive through the notice slot; 'notice' is the second string, which the agent does not send (see README, Notes on the code). No CSN run was logged.",
+ "per_run": {
+  "original_drivelm_faithful_rep1": {
+   "frames": 26105,
+   "instruction_mean": 43.445,
+   "notice_mean": 52.157,
+   "total_mean": 95.602
+  },
+  "original_drivelm_faithful_rep2": {
+   "frames": 26171,
+   "instruction_mean": 43.435,
+   "notice_mean": 51.53,
+   "total_mean": 94.965
+  },
+  "original_drivelm_faithful_rep3": {
+   "frames": 23041,
+   "instruction_mean": 43.417,
+   "notice_mean": 51.695,
+   "total_mean": 95.111
+  },
+  "original_drivelm_faithful_rep4": {
+   "frames": 26883,
+   "instruction_mean": 43.379,
+   "notice_mean": 51.295,
+   "total_mean": 94.675
+  },
+  "original_drivelm_faithful_rep5": {
+   "frames": 26616,
+   "instruction_mean": 43.449,
+   "notice_mean": 51.671,
+   "total_mean": 95.12
+  },
+  "original_drivelm_rep1": {
+   "frames": 20865,
+   "instruction_mean": 24.062,
+   "notice_mean": 32.234,
+   "total_mean": 56.296
+  },
+  "original_drivelm_rep2": {
+   "frames": 17485,
+   "instruction_mean": 24.012,
+   "notice_mean": 31.747,
+   "total_mean": 55.759
+  },
+  "original_drivelm_rep3": {
+   "frames": 21535,
+   "instruction_mean": 24.295,
+   "notice_mean": 32.707,
+   "total_mean": 57.003
+  },
+  "original_drivelm_rep4": {
+   "frames": 17661,
+   "instruction_mean": 24.006,
+   "notice_mean": 32.022,
+   "total_mean": 56.028
+  },
+  "original_drivelm_rep5": {
+   "frames": 18458,
+   "instruction_mean": 24.303,
+   "notice_mean": 33.031,
+   "total_mean": 57.334
+  },
+  "original_drivevlm_faithful_rep1": {
+   "frames": 21946,
+   "instruction_mean": 40.734,
+   "notice_mean": 37.124,
+   "total_mean": 77.858
+  },
+  "original_drivevlm_faithful_rep2": {
+   "frames": 23203,
+   "instruction_mean": 41.004,
+   "notice_mean": 36.767,
+   "total_mean": 77.77
+  },
+  "original_drivevlm_faithful_rep3": {
+   "frames": 26025,
+   "instruction_mean": 41.793,
+   "notice_mean": 37.694,
+   "total_mean": 79.487
+  },
+  "original_drivevlm_faithful_rep4": {
+   "frames": 29806,
+   "instruction_mean": 41.758,
+   "notice_mean": 37.586,
+   "total_mean": 79.343
+  },
+  "original_drivevlm_faithful_rep5": {
+   "frames": 25657,
+   "instruction_mean": 41.588,
+   "notice_mean": 37.415,
+   "total_mean": 79.003
+  },
+  "original_drivevlm_rep1": {
+   "frames": 14865,
+   "instruction_mean": 45.315,
+   "notice_mean": 23.058,
+   "total_mean": 68.373
+  },
+  "original_drivevlm_rep2": {
+   "frames": 17611,
+   "instruction_mean": 46.719,
+   "notice_mean": 23.915,
+   "total_mean": 70.634
+  },
+  "original_drivevlm_rep3": {
+   "frames": 16863,
+   "instruction_mean": 46.019,
+   "notice_mean": 23.207,
+   "total_mean": 69.227
+  },
+  "original_drivevlm_rep4": {
+   "frames": 17085,
+   "instruction_mean": 45.693,
+   "notice_mean": 23.289,
+   "total_mean": 68.981
+  },
+  "original_drivevlm_rep5": {
+   "frames": 20886,
+   "instruction_mean": 45.801,
+   "notice_mean": 23.592,
+   "total_mean": 69.393
+  }
+ },
+ "per_config": {
+  "original_drivelm": {
+   "frames": 96004,
+   "instruction_mean": 24.141,
+   "notice_mean": 32.366,
+   "total_mean": 56.507
+  },
+  "original_drivelm_faithful": {
+   "frames": 128816,
+   "instruction_mean": 43.425,
+   "notice_mean": 51.667,
+   "total_mean": 95.092
+  },
+  "original_drivevlm": {
+   "frames": 87310,
+   "instruction_mean": 45.924,
+   "notice_mean": 23.433,
+   "total_mean": 69.357
+  },
+  "original_drivevlm_faithful": {
+   "frames": 126637,
+   "instruction_mean": 41.415,
+   "notice_mean": 37.343,
+   "total_mean": 78.758
+  }
+ }
+}

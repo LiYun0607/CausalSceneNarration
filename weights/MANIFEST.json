@@ -1,0 +1,14 @@
+{
+  "archive": "CausalSceneNarration_lora_v1.zip",
+  "description": "LoRA adapter of the weight configuration called PL-DPO-NLL in the paper (internal run name pldpo-v5-turn-focused-r32). Its training log shows the standard pairwise DPO loss with beta 0.2 (initial loss 0.690, close to ln 2); the Plackett-Luce ranking term, the NLL term and the scenario-dependent beta of the paper's Sec. 4.4 were not active in this run. Rank 32, alpha 32, dropout 0, on q/k/v/o/gate/up/down projections of the 32 LLaMA layers (448 tensors). Loaded with peft.PeftModel.from_pretrained onto the language model of LMDrive-LLaVA-v1.5-7B.",
+  "files": {
+    "adapter_model.safetensors": {
+      "bytes": 319876032,
+      "sha256": "3b0060d76fbc5640131988b92e562056ed60e6be1cb080b453a2f66c73b69ef5"
+    },
+    "adapter_config.json": {
+      "sha256": "417ae474ce15885d65fe6621f953e01ddcf0af6a6dcee6492973586e54c9c95e",
+      "note": "identical to the training output except base_model_name_or_path, which pointed to a path on the training server and is set to null"
+    }
+  }
+}
