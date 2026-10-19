@@ -1,244 +1,75 @@
-#!/usr/bin/env python3
-"""Draw the Driving Score comparison figure (figures/ds_comparison.pdf in the paper).
-
-Bar charts for the two weight configurations and a raincloud of the individual
-runs, from results/multitown_ablation/. Output: figures/out/.
-"""
-
-import json
-import glob
+"""Draw the Driving Score comparison figure (Fig. 5 of the paper) from results/multitown_ablation; output figures/out/.
+(seaborn ticks, serif, mathtext, bold (a)(b)(c) at the left, no text boxes). Data = the paper's
+results (release/CausalSceneNarration/results/multitown_ablation). Bootstrap CIs: 5,000 draws, seed 0."""
+import glob, json, sys
 from pathlib import Path
-import numpy as np
-import pandas as pd
-import matplotlib
+import numpy as np, matplotlib
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.collections import PolyCollection
+import matplotlib.pyplot as plt, seaborn as sns
 from scipy import stats
-import seaborn as sns
 
-ROOT = Path(__file__).resolve().parents[1]
-RESULT_DIR = str(ROOT / "results" / "multitown_ablation")
-OUT_DIR = ROOT / "figures" / "out"
-OUT_DIR.mkdir(parents=True, exist_ok=True)
+ROOT = Path(__file__).resolve().parents[1] / "results" / "multitown_ablation"
+OUT = Path(__file__).resolve().parents[1] / "figures" / "out"; OUT.mkdir(parents=True, exist_ok=True)
+sns.set_theme(style="ticks", context="paper")
+SERIF = ["Nimbus Roman", "Liberation Serif", "STIX Two Text", "STIXGeneral", "DejaVu Serif"]
+plt.rcParams.update({"font.family": SERIF, "mathtext.fontset": "stix", "font.size": 8, "axes.titlesize": 8.5,
+                     "axes.labelsize": 7.5, "xtick.labelsize": 6.5, "ytick.labelsize": 6.5, "legend.fontsize": 6.3,
+                     "axes.edgecolor": "0.3", "axes.linewidth": 0.7, "xtick.major.width": 0.6, "ytick.major.width": 0.6,
+                     "xtick.major.size": 2.5, "ytick.major.size": 2.5, "axes.unicode_minus": False})
+P = sns.color_palette("deep")
+BLUE, ORANGE, GREEN, RED, PURPLE, YELLOW = P[0], P[1], P[2], P[3], P[4], P[8]
+COL = {"LMDrive": BLUE, "PL-DPO-NLL": BLUE, "+CSN": ORANGE, "+Flat Text": YELLOW, "+Safety": GREEN, "+TTC": RED, "+CSN+Safety": PURPLE}
 
-def load_ds(pattern):
-    files = sorted(glob.glob(f"{RESULT_DIR}/{pattern}"))
+def load(pattern):
     vals = []
-    for f in files:
-        with open(f) as fh:
-            d = json.load(fh)
-        p = d["_checkpoint"]["progress"]
-        if not p or p[0] != p[1]:
-            continue
-        records = d["_checkpoint"]["records"]
-        vals.append(np.mean([r["scores"]["score_composed"] for r in records]))
-    return vals
+    for f in sorted(glob.glob(str(ROOT / pattern))):
+        d = json.load(open(f)); p = d["_checkpoint"]["progress"]
+        if not p or p[0] != p[1]: continue
+        vals.append(np.mean([r["scores"]["score_composed"] for r in d["_checkpoint"]["records"]]))
+    return np.array(vals)
 
-configs = [
-    ("LMDrive",    "original_lmdrive_rep*.json",          "Original LMDrive"),
-    ("+CSN",       "original_csn_rep*.json",              "Original LMDrive"),
-    ("+Flat Text", "original_flat_text_rep*.json",        "Original LMDrive"),
-    ("+Safety",    "original_semantic_safety_rep*.json",   "Original LMDrive"),
-    ("PL-DPO-NLL", "baseline_*.json",                     "PL-DPO-NLL"),
-    ("+TTC",       "ttc_safety_*.json",                   "PL-DPO-NLL"),
-    ("+Safety",    "semantic_safety_*.json",              "PL-DPO-NLL"),
-    ("+CSN",       "csn_only_*.json",                    "PL-DPO-NLL"),
-    ("+CSN+Safety","csn_semantic_safety_*.json",          "PL-DPO-NLL"),
-    ("+Flat Text", "flat_text_*.json",                   "PL-DPO-NLL"),
-]
+GROUPS = {"Original LMDrive": [("LMDrive", "original_lmdrive_rep*.json"), ("+CSN", "original_csn_rep*.json"),
+                               ("+Flat Text", "original_flat_text_rep*.json"), ("+Safety", "original_semantic_safety_rep*.json")],
+          "PL-DPO-NLL": [("PL-DPO-NLL", "baseline_*.json"), ("+TTC", "ttc_safety_*.json"), ("+Safety", "semantic_safety_*.json"),
+                         ("+CSN", "csn_only_*.json"), ("+CSN+Safety", "csn_semantic_safety_*.json"), ("+Flat Text", "flat_text_*.json")]}
+data = {g: [(lab, load(pat)) for lab, pat in cfg] for g, cfg in GROUPS.items()}
+rng = np.random.default_rng(0)
+def ci(v, n=5000):
+    m = np.array([rng.choice(v, len(v), replace=True).mean() for _ in range(n)]); return np.percentile(m, [2.5, 97.5])
+base = data["Original LMDrive"][0][1].mean()
 
-rows = []
-for label, pat, group in configs:
-    vals = load_ds(pat)
-    for v in vals:
-        rows.append({"Configuration": label, "Group": group, "DS": v})
-df = pd.DataFrame(rows)
+fig = plt.figure(figsize=(6.5, 2.4), dpi=300)
+gs = fig.add_gridspec(1, 3, width_ratios=[1.0, 1.45, 1.75], wspace=0.42, left=0.07, right=0.995, top=0.90, bottom=0.29)
+axes = [fig.add_subplot(gs[0, i]) for i in range(3)]
+for ax, (gname, panel) in zip(axes[:2], [("Original LMDrive", "(a)"), ("PL-DPO-NLL", "(b)")]):
+    rows = data[gname]
+    for i, (lab, v) in enumerate(rows):
+        lo, hi = ci(v); m = v.mean()
+        ax.bar(i, m, width=0.68, color=COL[lab], edgecolor="0.3", linewidth=0.5, zorder=2)
+        ax.errorbar(i, m, yerr=[[m - lo], [hi - m]], fmt="none", ecolor="0.25", elinewidth=0.7, capsize=2, capthick=0.7, zorder=3)
+        ax.text(i, hi + 1.2, f"{m:.1f}", ha="center", va="bottom", fontsize=6.3, color="0.2")
+    ax.axhline(base, color="0.55", ls=":", lw=0.7, zorder=1)
+    ax.set_xticks(range(len(rows))); ax.set_xticklabels([r[0] for r in rows], rotation=28, ha="right", rotation_mode="anchor")
+    ax.set_xlabel(gname, labelpad=2); ax.set_ylim(0, 56); ax.set_title(panel, loc="left", fontweight="bold", pad=3)
+    ax.set_yticks([0, 10, 20, 30, 40, 50])
+axes[0].set_ylabel("driving score"); axes[1].set_yticklabels([])
+sns.despine(ax=axes[0]); sns.despine(ax=axes[1])
 
-# Full names for right panel
-name_map = {}
-for label, _, group in configs:
-    key = (label, group)
-    if key not in name_map:
-        if group == "Original LMDrive" and label != "LMDrive":
-            name_map[key] = f"Orig. {label}"
-        elif group == "PL-DPO-NLL" and label != "PL-DPO-NLL":
-            name_map[key] = f"PL {label}"
-        else:
-            name_map[key] = label
-df["FullName"] = df.apply(lambda r: name_map[(r["Configuration"], r["Group"])], axis=1)
-
-# --- Styling ---
-plt.rcParams.update({
-    "font.family": "serif",
-    "font.serif": ["Times New Roman", "DejaVu Serif"],
-    "mathtext.fontset": "dejavuserif",
-})
-sns.set_theme(
-    style="ticks",
-    font_scale=1.2,
-    rc={
-        "axes.facecolor": "white",
-        "figure.facecolor": "white",
-        "grid.color": "#E8E8E8",
-        "grid.linewidth": 0.6,
-        "axes.edgecolor": "#CCCCCC",
-        "axes.linewidth": 0.6,
-    },
-)
-
-fig, axes = plt.subplots(
-    1, 3, figsize=(20, 5.5),
-    gridspec_kw={"width_ratios": [4, 6, 7], "wspace": 0.15},
-)
-ax_bar1, ax_bar2, ax_rain = axes
-ax_bar2.sharey(ax_bar1)
-
-color_map = {
-    "LMDrive":    "#6C8EBF",
-    "PL-DPO-NLL": "#6C8EBF",
-    "+CSN":       "#D4A03C",
-    "+Flat Text": "#E8C56D",
-    "+Safety":    "#7BAE7F",
-    "+TTC":       "#C75B5B",
-    "+CSN+Safety":"#9B7DC2",
-}
-
-# ---- Left two panels: bar charts ----
-for ax, group_name in zip([ax_bar1, ax_bar2], ["Original LMDrive", "PL-DPO-NLL"]):
-    group_df = df[df["Group"] == group_name]
-    order = [c[0] for c in configs if c[2] == group_name]
-    seen = set()
-    order_unique = []
-    for o in order:
-        if o not in seen:
-            order_unique.append(o)
-            seen.add(o)
-    palette = [color_map[c] for c in order_unique]
-
-    sns.barplot(
-        data=group_df, x="Configuration", y="DS", order=order_unique,
-        palette=palette, ax=ax, errorbar=("ci", 95), capsize=0.12,
-        err_kws={"linewidth": 1.2, "color": "#444444"},
-        edgecolor="#555555", linewidth=0.5, saturation=0.95,
-        width=0.72,
-    )
-
-    for i, bar in enumerate(ax.patches):
-        if bar.get_height() > 0:
-            sub = group_df[group_df["Configuration"] == order_unique[i]]
-            m = sub["DS"].mean()
-            ci_upper = np.percentile(
-                [np.mean(np.random.default_rng(s).choice(sub["DS"].values, len(sub), replace=True))
-                 for s in range(5000)], 97.5)
-            y_pos = max(ci_upper, bar.get_height()) + 1.8
-            ax.text(bar.get_x() + bar.get_width() / 2, y_pos,
-                    f"{m:.1f}", ha="center", va="bottom", fontsize=9,
-                    fontweight="semibold", color="#222222")
-
-    ax.set_title(group_name, fontsize=12, fontweight="bold", pad=10, color="#333333")
-    ax.set_xlabel("")
-    ax.tick_params(axis="x", labelsize=9, rotation=0)
-    ax.tick_params(axis="y", labelsize=10)
-    ax.yaxis.grid(True, linewidth=0.4, color="#E0E0E0")
-    ax.xaxis.grid(False)
-    ax.set_axisbelow(True)
-
-# ---- Right panel: Raincloud plot (half-violin + jittered strip + mean diamond) ----
-rain_order = [
-    "LMDrive", "Orig. +CSN", "Orig. +Flat Text", "Orig. +Safety",
-    "PL-DPO-NLL", "PL +TTC", "PL +Safety", "PL +CSN", "PL +CSN+Safety", "PL +Flat Text",
-]
-
-strip_color_map = {
-    "LMDrive":         "#6C8EBF",
-    "Orig. +CSN":      "#D4A03C",
-    "Orig. +Flat Text": "#E8C56D",
-    "Orig. +Safety":   "#7BAE7F",
-    "PL-DPO-NLL":      "#6C8EBF",
-    "PL +TTC":         "#C75B5B",
-    "PL +Safety":      "#7BAE7F",
-    "PL +CSN":         "#D4A03C",
-    "PL +CSN+Safety":  "#9B7DC2",
-    "PL +Flat Text":   "#E8C56D",
-}
-
-# Draw half-violin (KDE) on the upper side, strip on the lower side
-for idx, name in enumerate(rain_order):
-    sub = df[df["FullName"] == name]["DS"].values
-    color = strip_color_map[name]
-
-    # Half-violin (KDE) — drawn above the center line
-    if len(sub) >= 2 and np.std(sub) > 0.01:
-        kde_x = np.linspace(sub.min() - 3, sub.max() + 3, 200)
-        kde = stats.gaussian_kde(sub, bw_method=0.5)
-        kde_y = kde(kde_x)
-        # Normalize height
-        kde_y = kde_y / kde_y.max() * 0.35
-        # Draw as filled polygon above the line (idx - kde_y)
-        ax_rain.fill_between(kde_x, idx - kde_y, idx,
-                             color=color, alpha=0.35, zorder=2)
-        ax_rain.plot(kde_x, idx - kde_y,
-                     color=color, linewidth=0.8, alpha=0.7, zorder=2)
-
-    # Jittered strip below center line
-    rng = np.random.default_rng(42 + idx)
-    jitter = rng.uniform(0.05, 0.25, size=len(sub))
-    ax_rain.scatter(sub, idx + jitter,
-                    color=color, s=40, alpha=0.85,
-                    edgecolors="#444444", linewidths=0.5, zorder=4)
-
-    # Mean marker (diamond)
-    m = np.mean(sub)
-    ax_rain.scatter([m], [idx], marker="D", color="white",
-                    edgecolors="#333333", s=50, linewidths=1.2, zorder=5)
-
-    # Thin CI whisker
-    ci_lo, ci_hi = np.percentile(
-        [np.mean(rng.choice(sub, len(sub), replace=True)) for _ in range(5000)],
-        [2.5, 97.5])
-    ax_rain.plot([ci_lo, ci_hi], [idx, idx],
-                 color="#555555", linewidth=1.5, zorder=3, solid_capstyle="round")
-
-# Separator between groups
-ax_rain.axhline(y=3.5, color="#BBBBBB", linestyle="--", linewidth=0.7, zorder=1)
-
-# Reference line
-base_orig = df[(df["Configuration"] == "LMDrive") & (df["Group"] == "Original LMDrive")]["DS"].mean()
-ax_rain.axvline(x=base_orig, color="#999999", linestyle=":", linewidth=0.9, zorder=0)
-
-# Y-axis labels on the RIGHT side
-ax_rain.set_yticks(range(len(rain_order)))
-ax_rain.set_yticklabels(rain_order, fontsize=9)
-ax_rain.yaxis.tick_right()
-ax_rain.yaxis.set_label_position("right")
-ax_rain.invert_yaxis()
-
-ax_rain.set_title("Distribution of Individual Runs", fontsize=12, fontweight="bold",
-                   pad=10, color="#333333")
-ax_rain.set_xlabel("Driving Score", fontsize=11, color="#333333")
-ax_rain.set_ylabel("")
-ax_rain.tick_params(axis="x", labelsize=10)
-ax_rain.xaxis.grid(True, linewidth=0.4, color="#E0E0E0")
-ax_rain.yaxis.grid(False)
-ax_rain.set_axisbelow(True)
-
-# Reference line on bar panels
-for ax in [ax_bar1, ax_bar2]:
-    ax.axhline(y=base_orig, color="#999999", linestyle=":", linewidth=0.9, zorder=0)
-
-ax_bar1.set_ylabel("Driving Score", fontsize=12, color="#333333")
-ax_bar2.set_ylabel("")
-ax_bar1.set_ylim(0, 54)
-
-sns.despine(right=False)
-# Keep right spine for rain panel only
-ax_bar1.spines["right"].set_visible(False)
-ax_bar2.spines["right"].set_visible(False)
-
-plt.tight_layout()
-fig.savefig(OUT_DIR / "ds_comparison.pdf", format="pdf", dpi=300, bbox_inches="tight")
-fig.savefig(OUT_DIR / "ds_comparison.png", format="png", dpi=300, bbox_inches="tight")
-print("Saved", OUT_DIR / "ds_comparison.pdf")
-plt.close()
+ax = axes[2]
+order = [(g, lab, v) for g in GROUPS for lab, v in data[g]]
+names = [lab if lab in ("LMDrive", "PL-DPO-NLL") else ("Orig. " if g == "Original LMDrive" else "PL ") + lab for g, lab, v in order]
+for idx, (g, lab, v) in enumerate(order):
+    c = COL[lab]
+    if len(v) >= 2 and v.std() > 0.01:
+        xs = np.linspace(v.min() - 3, v.max() + 3, 200); ys = stats.gaussian_kde(v, bw_method=0.5)(xs); ys = ys / ys.max() * 0.38
+        ax.fill_between(xs, idx - ys, idx, color=c, alpha=0.30, lw=0, zorder=2); ax.plot(xs, idx - ys, color=c, lw=0.6, zorder=2)
+    jit = np.random.default_rng(42 + idx).uniform(0.06, 0.30, len(v))
+    ax.scatter(v, idx + jit, s=9, color=c, edgecolors="0.3", linewidths=0.4, zorder=4)
+    lo, hi = ci(v); ax.plot([lo, hi], [idx, idx], color="0.25", lw=1.0, solid_capstyle="round", zorder=3)
+    ax.scatter([v.mean()], [idx], marker="D", s=14, color="white", edgecolors="0.2", linewidths=0.7, zorder=5)
+ax.axhline(3.5, color="0.6", ls="--", lw=0.6, zorder=1); ax.axvline(base, color="0.55", ls=":", lw=0.7, zorder=0)
+ax.set_yticks(range(len(order))); ax.set_yticklabels(names); ax.invert_yaxis(); ax.set_ylim(len(order) - 0.4, -0.9)
+ax.set_xlabel("driving score"); ax.set_xlim(15, 52); ax.set_title("(c)", loc="left", fontweight="bold", pad=3)
+sns.despine(ax=ax)
+fig.savefig(OUT / "ds_comparison.pdf"); fig.savefig(OUT / "ds_comparison.png", dpi=300)
+print("saved", OUT / "ds_comparison.pdf", {g: [(l, round(v.mean(), 2), len(v)) for l, v in data[g]] for g in data})
