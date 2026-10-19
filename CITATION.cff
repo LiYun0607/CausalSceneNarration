@@ -17,7 +17,7 @@ authors:
   - family-names: Tsukada
     given-names: Manabu
     affiliation: The University of Tokyo
-repository-code: "https://github.com/tlab-wide/CausalSceneNarration"
+repository-code: "https://github.com/LiYun0607/CausalSceneNarration"
 license: Apache-2.0
 preferred-citation:
   type: article
