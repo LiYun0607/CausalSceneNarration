@@ -7,8 +7,8 @@
       "sha256": "3b0060d76fbc5640131988b92e562056ed60e6be1cb080b453a2f66c73b69ef5"
     },
     "adapter_config.json": {
-      "sha256": "417ae474ce15885d65fe6621f953e01ddcf0af6a6dcee6492973586e54c9c95e",
-      "note": "identical to the training output except base_model_name_or_path, which pointed to a path on the training server and is set to null"
+      "sha256": "7bb89714f079d75b4df0021730eec7985001fb91ec56433b8d4a73b678486b4f",
+      "note": "identical to the training output except base_model_name_or_path, which pointed to a path on the training server and is set to liuhaotian/llava-v1.5-7b, the model the agent loads the adapter onto"
     }
   }
 }
