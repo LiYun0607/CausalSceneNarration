@@ -541,8 +541,7 @@ class LMDriveAgent(autonomous_agent.AutonomousAgent):
         if self.safety_enabled:
             planned_local = []
             # As run for the paper. run_step() pops route points, so these
-            # calls advance the agent's route planner on every tick (see
-            # README, "Known issue in the safety-enabled runs").
+            # calls advance the agent's route planner on every tick.
             temp_pos = pos
             for _ in range(5):
                 wp, _ = self._route_planner.run_step(temp_pos)
